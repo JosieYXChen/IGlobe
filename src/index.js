@@ -3,6 +3,20 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import firebase from 'firebase'
+
+const config = {
+  apiKey: "AIzaSyBIUjEk-0kpUC2wnQs2hGzoaUDkAQRgpwo",
+  authDomain: "iglobe-cc8df.firebaseapp.com",
+  databaseURL: "https://iglobe-cc8df.firebaseio.com",
+  projectId: "iglobe-cc8df",
+  storageBucket: "iglobe-cc8df.appspot.com",
+  messagingSenderId: "632519396036",
+  appId: "1:632519396036:web:9e745a8255699ecda25791",
+  measurementId: "G-KPTHLCJVZX"
+}
+
+firebase.initializeApp(config);
 
 ReactDOM.render(
   <React.StrictMode>
