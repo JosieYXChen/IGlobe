@@ -5,7 +5,6 @@ import nightView from './globeNight.jpg'
 import starField from './starField.png'
 import firebase from 'firebase';
 
-
 const MAP_CENTER = {
   lat: 39.95,
   lng: -75.16,
@@ -43,19 +42,6 @@ const MAP_CENTER = {
 //   }
 // ];
 
-// const dummyRoutes = [
-//   {
-//     "start": {
-//       "lat": 39.95,
-//       "lon": -75.16,
-//     },
-//     "end": {
-//       "lat": 39.90,
-//       "lon": 116.40,
-//     }
-//   },
-// ]
-// change pop_max to duration
 // label altitude ranges from 0.1 - 1.1
 // label size and dot radius range from 0.5 - 1.5
 
