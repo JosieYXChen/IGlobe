@@ -4,8 +4,6 @@ import PlacesAutocomplete, {
   getLatLng,
 } from 'react-places-autocomplete';
 
-console.log(PlacesAutocomplete)
-
 class Search extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +29,7 @@ class Search extends React.Component {
         onSelect={this.handleSelect}
       >
         {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
-          <div id="searchBox">
+          <div className="label-input">
             <input
               {...getInputProps({
                 placeholder: 'Search Places ...',
@@ -40,7 +38,7 @@ class Search extends React.Component {
             />
             <div className="autocomplete-dropdown-container">
               {loading && <div>Loading...</div>}
-              {suggestions.map(suggestion => {
+              {suggestions.map((suggestion, id) => {
                 const className = suggestion.active
                   ? 'suggestion-item--active'
                   : 'suggestion-item';
@@ -49,7 +47,7 @@ class Search extends React.Component {
                   ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                   : { backgroundColor: '#ffffff', cursor: 'pointer' };
                 return (
-                  <div
+                  <div key={`suggestion${id}`}
                     {...getSuggestionItemProps(suggestion, {
                       className,
                       style,

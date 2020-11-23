@@ -6,7 +6,8 @@ class Form extends React.Component {
   constructor() {
     super()
     this.state = {
-      place: '',
+      address: '',
+      // place: '',
       latitude: '',
       longitude: '',
       start: '',
@@ -85,14 +86,14 @@ class Form extends React.Component {
             <label>Till</label>
             <input name="end" type="date" value={end} onChange={this.handleChange}></input>
           </div>
-          <div className="label-input">
+          {/* <div className="label-input">
             <label>Latitude</label>
             <input name="latitude" type="number" step="0.01" value={latitude} onChange={this.handleChange}></input>
           </div>
           <div className="label-input">
             <label>Longitude</label>
             <input name="longitude" type="number" step="0.01" value={longitude} onChange={this.handleChange}></input>
-          </div>
+          </div> */}
           <button id="submit-button" type="submit">
             Submit
           </button>
