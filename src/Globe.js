@@ -49,13 +49,11 @@ const MAP_CENTER = {
 const Places = () => {
   const globeEl = useRef();
   const [places, setPlaces] = useState([]);
-  // setPlaces([dummyData])
-  // console.log(places);
 
   useEffect(() => {
-    const rootRef = firebase.database().ref();
+    const rootRef = firebase.database().ref().child('places');
     rootRef.on('value', async (snapshot) => {
-      const data = await snapshot.val().places
+      const data = await snapshot.val()
       setPlaces(data);
     }, error => console.log(error))
     globeEl.current.pointOfView(MAP_CENTER, 4000)
