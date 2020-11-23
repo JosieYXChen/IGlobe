@@ -8,8 +8,8 @@ const Routes = () => {
   return (
     <Router>
       {/* <Route path="/" component={Home} /> */}
-      <Route path="/" component={Search} />
       <Route path="/" component={App} />
+      <Route path="/" component={Form} />
     </Router>
   );
 }

@@ -1,12 +1,17 @@
 import React from 'react'
 import './Form.css'
 import firebase from 'firebase'
+import Search from './Search'
+import {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 class Form extends React.Component {
   constructor() {
     super()
     this.state = {
-      place: '',
+      address: '',
       latitude: '',
       longitude: '',
       start: '',
@@ -15,8 +20,9 @@ class Form extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.dateDiff = this.dateDiff.bind(this)
+    this.handleSelect = this.handleSelect.bind(this)
+    this.handleSearchChange = this.handleSearchChange.bind(this)
   }
-
 
   dateDiff(dateStr1, dateStr2){
     const [year1, month1, day1] = dateStr1.split('-').map(numStr => Number(numStr))
@@ -33,10 +39,29 @@ class Form extends React.Component {
     })
   }
 
+  handleSearchChange(address){
+    this.setState({ address });
+  }
+
+  handleSelect = async (address) => {
+    try {
+      const results = await geocodeByAddress(address)
+      const fullAddress = results[0].formatted_address;
+      const {lat, lng} = await getLatLng(results[0]);
+      this.setState({
+        address: fullAddress,
+        latitude: lat,
+        longitude: lng
+      })
+    } catch (err) {
+      console.error('Error', err)
+    }
+  };
+
   handleSubmit(event){
     event.preventDefault();
     const years = this.dateDiff(event.target.start.value, event.target.end.value)
-    const name = this.state.place
+    const name = this.state.address.split(',')[0];
     const lat = Number(this.state.latitude)
     const lon = Number(this.state.longitude)
 
@@ -56,27 +81,22 @@ class Form extends React.Component {
     updates['/places/' + newKey ] = newPlace;
 
     firebase.database().ref().update(updates);
-
     this.setState({
-      place: '',
+      address: '',
       latitude: '',
       longitude: '',
       start: '',
       end: ''
     })
-
     return
   }
 
   render() {
-    const { place, start, end, latitude, longitude} = this.state
+    const { address, start, end} = this.state
     return (
       <div id="navigation">
         <form className="flexbox" onSubmit={this.handleSubmit}>
-          <div className="label-input">
-            <label>Place</label>
-            <input name="place" type="text" value={place} onChange={this.handleChange}></input>
-          </div>
+          <Search address={address} handleSelect={this.handleSelect} handleChange={this.handleSearchChange}/>
           <div className="label-input">
             <label>Since</label>
             <input name="start" type="date" value={start} onChange={this.handleChange}></input>
@@ -84,14 +104,6 @@ class Form extends React.Component {
           <div className="label-input">
             <label>Till</label>
             <input name="end" type="date" value={end} onChange={this.handleChange}></input>
-          </div>
-          <div className="label-input">
-            <label>Latitude</label>
-            <input name="latitude" type="number" step="0.01" value={latitude} onChange={this.handleChange}></input>
-          </div>
-          <div className="label-input">
-            <label>Longitude</label>
-            <input name="longitude" type="number" step="0.01" value={longitude} onChange={this.handleChange}></input>
           </div>
           <button id="submit-button" type="submit">
             Submit

@@ -1,3 +1,13 @@
 #searchBox {
   background-color: white;
 }
+
+.suggestion-item--active {
+  background-color: '#fafafa';
+  cursor: 'pointer';
+}
+
+.suggestion-item {
+  background-color: '#ffffff';
+  cursor: 'pointer';
+}
