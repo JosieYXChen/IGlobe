@@ -7,7 +7,7 @@
   position: absolute;
   z-index: 999;
   top: 0px;
-  right: 0px;
+  left: 0px;
   padding: 10px 20px 10px 20px;
   border-radius: 1%;
 }
@@ -16,6 +16,7 @@
   display: flex;
   flex-direction: column;
   color: white;
+  font-family: impact, fantasy;
   font-weight: bold;
   font-size: large;
   text-align: center;
@@ -29,11 +30,20 @@
   justify-items: center;
 }
 
+input {
+  font-family: impact, fantasy;
+}
+
 #submit-button {
   margin-top: 20px;
   background-color: black;
+  font-family: impact, fantasy;
   color: white;
   font-weight: bold;
   opacity: 100%;
   box-shadow: 0 0 10px white;
+}
+
+.copy-mark {
+  font-size: medium;
 }

@@ -14,7 +14,7 @@ const Search = (props) => {
         <div className="label-input">
           <input
             {...getInputProps({
-              placeholder: 'Search Places ...',
+              placeholder: 'S e a r c h    P l a c e s ...',
               className: 'location-search-input',
             })}
           />

@@ -5,18 +5,18 @@ import Routes from './Routes';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase'
 
-const config = {
+var firebaseConfig = {
   apiKey: "AIzaSyBIUjEk-0kpUC2wnQs2hGzoaUDkAQRgpwo",
   authDomain: "iglobe-cc8df.firebaseapp.com",
   databaseURL: "https://iglobe-cc8df.firebaseio.com",
   projectId: "iglobe-cc8df",
   storageBucket: "iglobe-cc8df.appspot.com",
   messagingSenderId: "632519396036",
-  appId: "1:632519396036:web:9e745a8255699ecda25791",
-  measurementId: "G-KPTHLCJVZX"
-}
+  appId: "1:632519396036:web:2b1da647465ec187a25791",
+  measurementId: "G-2VYTYGSHQ3"
+};
 
-firebase.initializeApp(config);
+firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>

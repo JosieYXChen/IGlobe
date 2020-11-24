@@ -63,12 +63,12 @@ class Form extends React.Component {
     const years = this.dateDiff(event.target.start.value, event.target.end.value)
     const name = this.state.address.split(',')[0];
     const lat = Number(this.state.latitude)
-    const lon = Number(this.state.longitude)
+    const lng = Number(this.state.longitude)
 
     const newPlace = {
       name,
       lat,
-      lon,
+      lng,
       years,
     }
     let newKey = 0;
@@ -98,17 +98,17 @@ class Form extends React.Component {
         <form className="flexbox" onSubmit={this.handleSubmit}>
           <Search address={address} handleSelect={this.handleSelect} handleChange={this.handleSearchChange}/>
           <div className="label-input">
-            <label>Since</label>
+            <label>S i n c e</label>
             <input name="start" type="date" value={start} onChange={this.handleChange}></input>
           </div>
           <div className="label-input">
-            <label>Till</label>
+            <label>T i l l</label>
             <input name="end" type="date" value={end} onChange={this.handleChange}></input>
           </div>
           <button id="submit-button" type="submit">
-            Submit
+            S u b m i t
           </button>
-          <p className="mt-5 mb-3 text-muted">&copy; IGlobe 2020</p>
+          <p className="copy-mark">&copy; IGLOBE 2020</p>
         </form>
       </div>
     );
