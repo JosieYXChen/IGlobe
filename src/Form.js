@@ -108,6 +108,9 @@ class Form extends React.Component {
           <button id="submit-button" type="submit">
             S u b m i t
           </button>
+          <button id="signout-button" type="button">
+            S i g n    o u t
+          </button>
           <p className="copy-mark">&copy; IGLOBE 2020</p>
         </form>
       </div>

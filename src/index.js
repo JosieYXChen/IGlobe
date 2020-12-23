@@ -5,7 +5,7 @@ import Routes from './Routes';
 import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase'
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyBIUjEk-0kpUC2wnQs2hGzoaUDkAQRgpwo",
   authDomain: "iglobe-cc8df.firebaseapp.com",
   databaseURL: "https://iglobe-cc8df.firebaseio.com",

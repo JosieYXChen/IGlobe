@@ -38,6 +38,12 @@
   }
 }
 
+h1 {
+  color: white;
+  size: 500px;
+  text-align: center;
+}
+
 #root {
   background-color: black;
 }

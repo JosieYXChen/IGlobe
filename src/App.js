@@ -9,9 +9,12 @@ const Globe = React.lazy(()=> import('./Globe'))
 
 function App() {
   return (
-    <Suspense fallback={<PlainGlobe />}>
-      <Globe />
-    </Suspense>
+    <div>
+      <Form />
+      <Suspense fallback={<PlainGlobe />}>
+        <Globe />
+      </Suspense>
+    </div>
   );
 }
 
