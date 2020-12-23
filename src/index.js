@@ -6,14 +6,15 @@ import reportWebVitals from './reportWebVitals';
 import firebase from 'firebase'
 
 const firebaseConfig = {
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
   apiKey: "AIzaSyBIUjEk-0kpUC2wnQs2hGzoaUDkAQRgpwo",
   authDomain: "iglobe-cc8df.firebaseapp.com",
   databaseURL: "https://iglobe-cc8df.firebaseio.com",
   projectId: "iglobe-cc8df",
   storageBucket: "iglobe-cc8df.appspot.com",
   messagingSenderId: "632519396036",
-  appId: "1:632519396036:web:2b1da647465ec187a25791",
-  measurementId: "G-2VYTYGSHQ3"
+  appId: "1:632519396036:web:a2e097d43b5d8a07a25791",
+  measurementId: "G-BCBXGJSHQF"
 };
 
 firebase.initializeApp(firebaseConfig);
