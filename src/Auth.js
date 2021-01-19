@@ -25,7 +25,7 @@ const Auth = () => {
     return <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
   }
 
-  return <App />;
+  return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
 };
 
 export default Auth;

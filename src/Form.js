@@ -20,6 +20,7 @@ class Form extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.updateDataBase = this.updateDataBase.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   dateDiff(dateStr1, dateStr2) {
@@ -78,7 +79,7 @@ class Form extends React.Component {
     };
 
     this.props.places.push({ [this.props.places.length] : newPlace});
-    this.updateDataBase(newPlace);
+    this.props.isSignedIn ? this.updateDataBase(newPlace) : this.updateLocalStorage(newPlace);
 
     this.setState({
       address: '',
@@ -122,6 +123,10 @@ class Form extends React.Component {
     window.localStorage.setItem('places', JSON.stringify(localPlaces))
   }
 
+  handleClick(){
+    this.props.setIsSignedIn(false);
+  }
+
   render() {
     const { address, start, end } = this.state;
     return (
@@ -153,7 +158,7 @@ class Form extends React.Component {
           <button id="submit-button" type="submit">
             S u b m i t
           </button>
-          <button id="signout-button" type="button">
+          <button id="signout-button" type="button" onClick={this.handleClick}>
             S i g n o u t
           </button>
           <p className="copy-mark">&copy; IGLOBE 2020</p>

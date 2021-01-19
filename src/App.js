@@ -8,8 +8,10 @@ const Globe = React.lazy(() => import('./Globe'));
 
 //what the fallback return should be another three.js model
 
-function App() {
+function App(props) {
   const [places, setPlaces] = useState([]);
+  const { isSignedIn, setIsSignedIn } = props;
+  console.log(isSignedIn, setIsSignedIn);
 
     useEffect(() => {
     const rootRef = firebase.database().ref().child('places');
@@ -21,7 +23,7 @@ function App() {
 
   return (
     <div>
-      <Form places={places} setPlaces={setPlaces} />
+      <Form places={places} setPlaces={setPlaces} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
       <Suspense fallback={<PlainGlobe />}>
         <Globe places={places} setPlaces={setPlaces} />
       </Suspense>
