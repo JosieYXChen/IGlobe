@@ -106,6 +106,22 @@ class Form extends React.Component {
     firebase.database().ref().update(updates);
   }
 
+  updateLocalStorage(newPlace){
+    // creates a cart on localStorage
+    if (!window.localStorage.places) {
+      window.localStorage.setItem('places', JSON.stringify([]))
+    }
+
+    // grab places in local storage
+    const localPlaces = JSON.parse(window.localStorage.getItem('places'))
+
+    //push a new place
+    localPlaces.push(newPlace);
+
+    //reset localStorage with updated array of places
+    window.localStorage.setItem('places', JSON.stringify(localPlaces))
+  }
+
   render() {
     const { address, start, end } = this.state;
     return (
@@ -137,9 +153,9 @@ class Form extends React.Component {
           <button id="submit-button" type="submit">
             S u b m i t
           </button>
-          {/* <button id="signout-button" type="button">
+          <button id="signout-button" type="button">
             S i g n o u t
-          </button> */}
+          </button>
           <p className="copy-mark">&copy; IGLOBE 2020</p>
         </form>
       </div>

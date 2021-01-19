@@ -1,5 +1,5 @@
 // useEffect is used for data calls
-import React, {useState, useEffect, useRef} from 'react'
+import React, {useEffect, useRef} from 'react'
 import Globe from 'react-globe.gl'
 import nightView from './globeNight.jpg'
 import starField from './starField.png'
