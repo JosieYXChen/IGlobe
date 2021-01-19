@@ -3,36 +3,29 @@ import React, {useState, useEffect, useRef} from 'react'
 import Globe from 'react-globe.gl'
 import nightView from './globeNight.jpg'
 import starField from './starField.png'
-import firebase from 'firebase';
 
-const MAP_CENTER = {
-  lat: 39.95,
-  lng: -75.16,
-  altitude: 2.5
-}
 
 // label altitude ranges from 0.1 - 1.1
 // label size and dot radius range from 0.5 - 1.5
 
 
-const Places = () => {
+const Places = (props) => {
   const globeEl = useRef();
-  const [places, setPlaces] = useState([]);
+  const places = props.places;
 
-  useEffect(() => {
-    const rootRef = firebase.database().ref().child('places');
-    rootRef.on('value', async (snapshot) => {
-      const data = await snapshot.val()
-      setPlaces(data);
-    }, error => console.log(error))
-    globeEl.current.pointOfView(MAP_CENTER, 4000)
-  }, [])
+  useEffect(()=> {
+    // set the last place in the array as the point of view
+    const leng = props.places.length;
+    if (leng) {
+      const {lat, lng} = (props.places[leng - 1]);
+      globeEl.current.pointOfView({lat, lng, altitude: 2.5}, 4000)
+    }
+  })
 
   return <Globe
     ref={globeEl}
     backgroundImageUrl={starField}
     globeImageUrl={nightView}
-
     labelsData={places}
     labelLat={(d)=> d.lat}
     labelLng={(d)=> d.lng}
