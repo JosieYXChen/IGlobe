@@ -123,6 +123,7 @@ class Form extends React.Component {
     window.localStorage.setItem('places', JSON.stringify(localPlaces))
   }
 
+  // sign out
   handleClick(){
     this.props.setIsSignedIn(false);
   }

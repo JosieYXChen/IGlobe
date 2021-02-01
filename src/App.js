@@ -11,7 +11,6 @@ const Globe = React.lazy(() => import('./Globe'));
 function App(props) {
   const [places, setPlaces] = useState([]);
   const { isSignedIn, setIsSignedIn } = props;
-  console.log(isSignedIn, setIsSignedIn);
 
     useEffect(() => {
     const rootRef = firebase.database().ref().child('places');
