@@ -5,16 +5,22 @@
 
 .title {
   position: absolute;
-  top: 40%;
+  top: 45%;
   width: 100vw;
-  height: 15vh;
+  height: 12vh;
   background-color: rgb(117, 117, 151);
   opacity: 30%;
   z-index: 99;
   text-align: center;
   color: white;
-  font-size: 8rem;
+  font-size: 6rem;
   font-style: italic;
   text-shadow: 0rem 0rem 1rem white;
   box-shadow: 0rem 0rem 2rem white;
+}
+
+.audio {
+  position: absolute;
+  top: 10px;
+  left: 10px;
 }

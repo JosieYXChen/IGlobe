@@ -3,15 +3,13 @@ import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from 'drei'
 import BackgroundCube from './BackgroundCube'
 import './Home.css'
-// import PlainPlaces from './PlainPlaces'
 const BackgroundGlobe = React.lazy(() => import('./BackgroundGlobe'))
-// const Places = React.lazy(()=> import('./Places'))
-//what the fallback return should be another three.js model
+
 
 const Home = () => {
-
   return (
     <div className="background-container">
+      <audio controls autoPlay src={ process.env.PUBLIC_URL + '/background.mp3'}></audio>
       <div className="title">I G L O B E</div>
       <Canvas
         colorManagement
@@ -25,7 +23,7 @@ const Home = () => {
             <BackgroundGlobe
               position={[0, 0, 0]}
               color='lightblue'
-              args={[3.8, 100, 100]}
+              args={[4.5, 100, 100]}
             />
           </Suspense>
         <OrbitControls />
