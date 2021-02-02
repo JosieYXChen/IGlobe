@@ -9,14 +9,19 @@
   width: 100vw;
   height: 12vh;
   background-color: rgb(117, 117, 151);
-  opacity: 30%;
+  opacity: 50%;
   z-index: 99;
   text-align: center;
   color: white;
-  font-size: 6rem;
+  font-size: 7rem;
   font-style: italic;
-  text-shadow: 0rem 0rem 1rem white;
-  box-shadow: 0rem 0rem 2rem white;
+  font-family: Impact, fantasy;
+  text-shadow: 0rem 0rem 0.2rem white;
+  box-shadow: 0rem 0rem 3rem white;
+}
+
+.title:hover {
+  opacity: 80%;
 }
 
 .audio {

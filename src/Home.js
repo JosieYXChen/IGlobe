@@ -3,14 +3,15 @@ import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from 'drei'
 import BackgroundCube from './BackgroundCube'
 import './Home.css'
+import Nav from './Nav'
 const BackgroundGlobe = React.lazy(() => import('./BackgroundGlobe'))
-
 
 const Home = () => {
   return (
     <div className="background-container">
-      <audio controls autoPlay src={ process.env.PUBLIC_URL + '/background.mp3'}></audio>
-      <div className="title">I G L O B E</div>
+      <audio src={ process.env.PUBLIC_URL + '/background.mp3'} autoPlay />
+      <Nav />
+      <div className="title"> I G L O B E </div>
       <Canvas
         colorManagement
         shadowMap
@@ -23,7 +24,7 @@ const Home = () => {
             <BackgroundGlobe
               position={[0, 0, 0]}
               color='lightblue'
-              args={[4.5, 100, 100]}
+              args={[6, 100, 100]}
             />
           </Suspense>
         <OrbitControls />

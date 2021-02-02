@@ -7,8 +7,8 @@ import Home from './Home';
 const Routes = () => {
   return (
     <Router>
+      <Route exact path="/" component={Home} />
       <Route path="/auth" component={Auth} />
-      <Route path="/home" component={Home} />
       <Route path="/app" component={App} />
     </Router>
   );

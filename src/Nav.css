@@ -1,0 +1,29 @@
+#nav-bar {
+  position: relative;
+  width: 100vw;
+  height: 10vh;
+  display: flex;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.nav-text {
+  color: white;
+  font-family: impact, fantasy;
+  font-size: 2rem;
+  text-decoration: none;
+  font-style: italic;
+  opacity: 50%;
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+  text-shadow: 0.1rem 0.1rem 0.5rem;
+}
+
+.nav-text:hover {
+  opacity: 80;
+}
+
+.nav-link {
+  text-decoration: none;
+}
