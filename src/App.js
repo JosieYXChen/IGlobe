@@ -2,6 +2,7 @@ import './App.css';
 // Canvas creates a scene and camera
 import React, { useState, useEffect, Suspense } from 'react';
 import PlainGlobe from './PlainGlobe';
+import Nav from './Nav';
 import Form from './Form';
 import firebase from 'firebase';
 const Globe = React.lazy(() => import('./Globe'));
@@ -22,6 +23,7 @@ function App(props) {
 
   return (
     <div>
+      <Nav />
       <Form places={places} setPlaces={setPlaces} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
       <Suspense fallback={<PlainGlobe />}>
         <Globe places={places} setPlaces={setPlaces} />

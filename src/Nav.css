@@ -1,11 +1,12 @@
 #nav-bar {
-  position: relative;
+  position: absolute;
   width: 100vw;
   height: 10vh;
   display: flex;
   justify-content: flex-end;
   padding-top: 1rem;
   padding-bottom: 1rem;
+  z-index: 99;
 }
 
 .nav-text {
