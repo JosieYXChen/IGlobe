@@ -94,7 +94,8 @@ class Form extends React.Component {
 
   updateDataBase(newPlace){
     let newKey = 0;
-    const rootRef = firebase.database().ref().child('places');
+    const userId = firebase.auth().currentUser.uid;
+    const rootRef = firebase.database().ref('/users/' + userId + '/places');
     rootRef.on(
       'value',
       snapshot => {
@@ -105,7 +106,7 @@ class Form extends React.Component {
     const updates = {};
     updates['/places/' + newKey] = newPlace;
 
-    firebase.database().ref().update(updates);
+    firebase.database().ref('/users/' + userId).update(updates);
   }
 
   updateLocalStorage(){

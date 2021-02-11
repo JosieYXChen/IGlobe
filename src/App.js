@@ -17,7 +17,8 @@ function App(props) {
 
   useEffect(() => {
     if(isSignedIn){
-      const rootRef = firebase.database().ref().child('places');
+      const userId = firebase.auth().currentUser.uid;
+      const rootRef = firebase.database().ref('/users/' + userId + '/places');
       rootRef.on('value', async (snapshot) => {
         const data = await snapshot.val()
         setPlaces(data);
