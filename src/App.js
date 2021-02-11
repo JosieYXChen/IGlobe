@@ -11,20 +11,28 @@ const Globe = React.lazy(() => import('./Globe'));
 
 function App(props) {
   const [places, setPlaces] = useState([]);
+  const [placeNum, setPlaceNum] = useState(0);
   const { isSignedIn, setIsSignedIn } = props;
+  console.log("App", places);
 
-    useEffect(() => {
-    const rootRef = firebase.database().ref().child('places');
-    rootRef.on('value', async (snapshot) => {
-      const data = await snapshot.val()
-      setPlaces(data);
-    }, error => console.log(error))
-  }, [])
+  useEffect(() => {
+    if(isSignedIn){
+      const rootRef = firebase.database().ref().child('places');
+      rootRef.on('value', async (snapshot) => {
+        const data = await snapshot.val()
+        setPlaces(data);
+      }, error => console.log(error))
+    } else {
+      // window.localStorage.clear();
+      if(window.localStorage.places) setPlaces(JSON.parse(window.localStorage.getItem('places')));
+      setPlaceNum(places.length);
+    }
+  }, [placeNum])
 
   return (
     <div>
       <Nav />
-      <Form places={places} setPlaces={setPlaces} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
+      <Form places={places} setPlaces={setPlaces} placeNum={placeNum} setPlaceNum ={setPlaceNum} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
       <Suspense fallback={<PlainGlobe />}>
         <Globe places={places} setPlaces={setPlaces} />
       </Suspense>

@@ -8,7 +8,6 @@ import starField from './starField.png'
 // label altitude ranges from 0.1 - 1.1
 // label size and dot radius range from 0.5 - 1.5
 
-
 const Places = (props) => {
   const globeEl = useRef();
   const places = props.places;

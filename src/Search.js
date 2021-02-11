@@ -17,6 +17,7 @@ const Search = (props) => {
               placeholder: 'S e a r c h    P l a c e s ...',
               className: 'location-search-input',
             })}
+            required={true}
           />
           <div className="autocomplete-dropdown-container">
             {loading && <div>Loading...</div>}

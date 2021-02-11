@@ -20,6 +20,7 @@ class Form extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
     this.handleSearchChange = this.handleSearchChange.bind(this);
     this.updateDataBase = this.updateDataBase.bind(this);
+    this.updateLocalStorage = this.updateLocalStorage.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -77,8 +78,8 @@ class Form extends React.Component {
       lng,
       years,
     };
-
-    this.props.places.push({ [this.props.places.length] : newPlace});
+    console.log(this.props.places);
+    this.props.places.push(newPlace);
     this.props.isSignedIn ? this.updateDataBase(newPlace) : this.updateLocalStorage(newPlace);
 
     this.setState({
@@ -107,20 +108,9 @@ class Form extends React.Component {
     firebase.database().ref().update(updates);
   }
 
-  updateLocalStorage(newPlace){
-    // creates a cart on localStorage
-    if (!window.localStorage.places) {
-      window.localStorage.setItem('places', JSON.stringify([]))
-    }
-
-    // grab places in local storage
-    const localPlaces = JSON.parse(window.localStorage.getItem('places'))
-
-    //push a new place
-    localPlaces.push(newPlace);
-
-    //reset localStorage with updated array of places
-    window.localStorage.setItem('places', JSON.stringify(localPlaces))
+  updateLocalStorage(){
+    window.localStorage.setItem('places', JSON.stringify(this.props.places))
+    this.props.setPlaceNum(this.props.places.length)
   }
 
   // sign out
@@ -145,6 +135,7 @@ class Form extends React.Component {
               type="date"
               value={start}
               onChange={this.handleChange}
+              required={true}
             ></input>
           </div>
           <div className="label-input">
@@ -154,6 +145,7 @@ class Form extends React.Component {
               type="date"
               value={end}
               onChange={this.handleChange}
+              required={true}
             ></input>
           </div>
           <button id="submit-button" type="submit">
