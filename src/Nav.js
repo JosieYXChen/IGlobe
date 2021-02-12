@@ -5,7 +5,7 @@ import './Nav.css'
 const Nav = () => {
   const currentRoute = useLocation().pathname;
   return (
-    <div id="nav-bar">
+    <div id="nav-bar" style={{zIndex: 99}}>
       {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
       {currentRoute !== '/app' && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
       {currentRoute !== '/auth' && <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link>}

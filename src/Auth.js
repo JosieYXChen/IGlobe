@@ -5,7 +5,7 @@ import App from './App';
 
 const uiConfig = {
   signInFlow: 'popup',
-  signInSuccessUrl: '/home',
+  signInSuccessUrl: '/app',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -14,6 +14,7 @@ const uiConfig = {
 
 const Auth = () => {
   const [isSignedIn, setIsSignedIn] = useState(false);
+
   useEffect(() => {
     const unregisterAuthObserver = firebase.auth().onAuthStateChanged(user => {
       setIsSignedIn(!!user);
@@ -22,9 +23,8 @@ const Auth = () => {
   }, []);
 
   if (!isSignedIn) {
-    return <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
+      return <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
   }
-
   return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
 };
 

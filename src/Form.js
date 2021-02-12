@@ -122,7 +122,7 @@ class Form extends React.Component {
   render() {
     const { address, start, end } = this.state;
     return (
-      <div id="navigation">
+      <div id="navigation" style={{zIndex: 99}}>
         <form className="flexbox" onSubmit={this.handleSubmit}>
           <Search
             address={address}

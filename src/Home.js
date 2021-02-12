@@ -11,7 +11,7 @@ const Home = () => {
     <div className="background-container">
       <audio src={ process.env.PUBLIC_URL + '/background.mp3'} autoPlay />
       <Nav />
-      <div className="title"> I G L O B E </div>
+      <div className="title" style={{zIndex: 99}}> I G L O B E </div>
       <Canvas
         colorManagement
         shadowMap
