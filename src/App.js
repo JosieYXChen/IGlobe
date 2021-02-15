@@ -13,7 +13,6 @@ function App(props) {
   const [places, setPlaces] = useState([]);
   const [placeNum, setPlaceNum] = useState(0);
   const { isSignedIn, setIsSignedIn } = props;
-  console.log("App", places);
 
   useEffect(() => {
     if(isSignedIn){

@@ -9,7 +9,7 @@
   width: 100vw;
   height: 10rem;
   background-color: rgb(117, 117, 151);
-  opacity: 50%;
+  opacity: 0.5;
   z-index: 99;
   text-align: center;
   color: white;
@@ -21,7 +21,7 @@
 }
 
 .title:hover {
-  opacity: 80%;
+  opacity: 0.8;
 }
 
 .audio {
