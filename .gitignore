@@ -23,5 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 #secrets
-iglobe-cc8df-firebase-adminsdk-y561r-fbe843951f.json
+adminsdk.json
 secrets.js

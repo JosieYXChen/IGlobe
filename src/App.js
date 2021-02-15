@@ -20,8 +20,8 @@ function App(props) {
       const userId = firebase.auth().currentUser.uid;
       const rootRef = firebase.database().ref('/users/' + userId + '/places');
       rootRef.on('value', async (snapshot) => {
-        const data = await snapshot.val()
-        setPlaces(data);
+        const data = await snapshot.val();
+        if(data) setPlaces(data);
       }, error => console.log(error))
     } else {
       // window.localStorage.clear();

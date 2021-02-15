@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import firebase from 'firebase';
 import App from './App';
+// import functions from 'functions'
 
 const uiConfig = {
   signInFlow: 'popup',
