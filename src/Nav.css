@@ -4,20 +4,21 @@
   height: 10vh;
   display: flex;
   justify-content: flex-end;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 1vh;
+  padding-bottom: 1vh;
+  padding-right: 1vh;
   z-index: 99;
 }
 
 .nav-text {
   color: white;
-  font-family: impact, fantasy;
-  font-size: 2rem;
+  font-family: impact;
+  font-size: 2.5vh;
   text-decoration: none;
   font-style: italic;
   opacity: 0.5;
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
+  margin-left: 1vw;
+  margin-right: 1vw;
   text-shadow: 0.1rem 0.1rem 0.5rem;
 }
 

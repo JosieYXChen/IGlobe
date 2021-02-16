@@ -15,9 +15,9 @@
   color: white;
   font-size: 10vh;
   font-style: italic;
-  font-family: Impact, fantasy;
+  font-family: Impact;
   text-shadow: 0rem 0rem 0.2rem white;
-  box-shadow: 0rem 0rem 3rem white;
+  box-shadow: 0rem 0rem 9rem white;
 }
 
 .title:hover {

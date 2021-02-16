@@ -81,6 +81,7 @@
     "workbox-webpack-plugin": "5.1.4"
   },
   "scripts": {
+    "dev-start": "react-scripts build && react-scripts start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",

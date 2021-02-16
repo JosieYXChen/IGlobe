@@ -1,14 +1,14 @@
 #navigation {
-  margin: 10px 10px;
-  height: 30vh;
+  margin: 1vw 1vw;
+  height: 25vh;
   width: 20vh;
   background-color: gray;
-  opacity: 0.5;
+  opacity: 0.4;
   position: absolute;
-  z-index: 999;
-  top: 1vh;
-  left: 1vw;
-  padding: 10px 20px 10px 20px;
+  z-index: 99;
+  top: 0vh;
+  left: 0vw;
+  padding: 1vh 1vw 1vw 1vw;
   border-radius: 1%;
 }
 
@@ -16,9 +16,10 @@
   display: flex;
   flex-direction: column;
   color: white;
-  font-family: impact, fantasy;
+  font-family: impact;
+  font-style: italic;
   font-weight: bold;
-  font-size: large;
+  font-size: 1.5rem;
   text-align: center;
   text-shadow: 0 0 10px black;
 }
@@ -31,34 +32,29 @@
 }
 
 input {
-  font-family: impact, fantasy;
+  font-family: impact;
 }
 
 #submit-button {
-  margin-top: 20px;
+  margin-top: 1vh;
   background-color: black;
-  font-family: impact, fantasy;
+  font-family: impact;
+  font-size: 1rem;
   color: white;
   font-weight: bold;
-  opacity: 1;
   box-shadow: 0 0 10px white;
 }
 
 #signout-button {
-  margin-top: 20px;
+  margin-top: 1vh;
   background-color: black;
-  font-family: impact, fantasy;
+  font-family: impact;
+  font-size: 1rem;
   color: white;
   font-weight: bold;
-  opacity: 1;
   box-shadow: 0 0 10px white;
 }
 
 .copy-mark {
-  font-size: medium;
-}
-
-@media only screen and (max-width: 500px) {
-  #navigation {
-  }
+  font-size: 1rem;
 }

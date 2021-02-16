@@ -129,7 +129,7 @@ class Form extends React.Component {
             handleChange={this.handleSearchChange}
           />
           <div className="label-input">
-            <label>S i n c e</label>
+            <label>Since</label>
             <input
               name="start"
               type="date"
@@ -139,7 +139,7 @@ class Form extends React.Component {
             ></input>
           </div>
           <div className="label-input">
-            <label>T i l l</label>
+            <label>Till</label>
             <input
               name="end"
               type="date"
@@ -149,11 +149,11 @@ class Form extends React.Component {
             ></input>
           </div>
           <button id="submit-button" type="submit">
-            S u b m i t
+            Submit
           </button>
           {this.props.isSignedIn &&
             <button id="signout-button" type="button" onClick={this.handleClick}>
-              S i g n o u t
+              Signout
             </button>
           }
           <p className="copy-mark">&copy; IGLOBE 2020</p>
