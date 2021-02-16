@@ -78,7 +78,6 @@ class Form extends React.Component {
       lng,
       years,
     };
-    console.log(this.props.places);
     this.props.places.push(newPlace);
     this.props.isSignedIn ? this.updateDataBase(newPlace) : this.updateLocalStorage(newPlace);
 
@@ -122,7 +121,7 @@ class Form extends React.Component {
   render() {
     const { address, start, end } = this.state;
     return (
-      <div id="navigation" style={{zIndex: 99}}>
+      <div id="navigation">
         <form className="flexbox" onSubmit={this.handleSubmit}>
           <Search
             address={address}

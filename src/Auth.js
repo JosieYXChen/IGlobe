@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import FirebaseAuth from 'react-firebaseui/FirebaseAuth';
 import firebase from 'firebase';
 import App from './App';
-// import functions from 'functions'
+
 
 const uiConfig = {
   signInFlow: 'popup',
@@ -24,7 +24,9 @@ const Auth = () => {
   }, []);
 
   if (!isSignedIn) {
-      return <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />;
+      return <div id="auth-container">
+        <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
+      </div>
   }
   return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
 };

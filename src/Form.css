@@ -1,13 +1,13 @@
 #navigation {
   margin: 10px 10px;
-  height: 50vh;
+  height: 30vh;
   width: 20vh;
   background-color: gray;
   opacity: 0.5;
   position: absolute;
   z-index: 999;
-  top: 0px;
-  left: 0px;
+  top: 1vh;
+  left: 1vw;
   padding: 10px 20px 10px 20px;
   border-radius: 1%;
 }
@@ -40,7 +40,7 @@ input {
   font-family: impact, fantasy;
   color: white;
   font-weight: bold;
-  opacity: 100%;
+  opacity: 1;
   box-shadow: 0 0 10px white;
 }
 
@@ -50,10 +50,15 @@ input {
   font-family: impact, fantasy;
   color: white;
   font-weight: bold;
-  opacity: 100%;
+  opacity: 1;
   box-shadow: 0 0 10px white;
 }
 
 .copy-mark {
   font-size: medium;
+}
+
+@media only screen and (max-width: 500px) {
+  #navigation {
+  }
 }

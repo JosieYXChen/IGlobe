@@ -31,7 +31,7 @@ function App(props) {
 
   return (
     <div>
-      <Nav />
+      <Nav isSignedIn={isSignedIn}/>
       <Form places={places} setPlaces={setPlaces} placeNum={placeNum} setPlaceNum ={setPlaceNum} isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn}/>
       <Suspense fallback={<PlainGlobe />}>
         <Globe places={places} setPlaces={setPlaces} />
