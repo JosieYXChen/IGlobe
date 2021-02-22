@@ -121,7 +121,8 @@ class Form extends React.Component {
   render() {
     const { address, start, end } = this.state;
     return (
-      <div id="navigation">
+      <div id="form-container">
+        <div className="form">
         <form className="flexbox" onSubmit={this.handleSubmit}>
           <Search
             address={address}
@@ -158,6 +159,10 @@ class Form extends React.Component {
           }
           <p className="copy-mark">&copy; IGLOBE 2020</p>
         </form>
+        </div>
+        <div className="form-btn">
+          <i className="fab fa-wpforms"></i>
+        </div>
       </div>
     );
   }
