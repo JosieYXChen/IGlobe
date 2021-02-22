@@ -8,9 +8,14 @@ const Nav = (props) => {
 
   return (
     <div id="nav-bar">
-      {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
-      {currentRoute !== '/app' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
-      {currentRoute !== '/auth' && <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link>}
+      <div class="menu">
+        {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
+        {currentRoute !== '/app' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
+        {currentRoute !== '/auth' && <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link>}
+      </div>
+      <div class="menu-btn">
+        <i class="fas fa-bars"></i>
+      </div>
     </div>
   )
 }

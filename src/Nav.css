@@ -29,3 +29,36 @@
 .nav-link {
   text-decoration: none;
 }
+
+.menu-btn {
+  color: white;
+  opacity: 0.5;
+  font-size: 25px;
+  cursor: pointer;
+  margin-right: 10px;
+  /* display: none; */
+}
+
+@media (max-width: 690px) {
+  .menu-btn i.active:before {
+    content: '\f00d';
+  }
+
+  .menu {
+    position: absolute;
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vh;
+    z-index: 99;
+    right: -100%;
+  }
+
+  .navbar .menu.active {
+    left: 0;
+  }
+}
