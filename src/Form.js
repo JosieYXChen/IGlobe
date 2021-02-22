@@ -1,76 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Form.css';
-import firebase from 'firebase';
+
 import Search from './Search';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
+import { dateDiff, updateDataBase, updateLocalStorage, handleSignOut } from './helper'
 
-class Form extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      address: '',
-      latitude: '',
-      longitude: '',
-      start: '',
-      end: '',
-    };
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleChange = this.handleChange.bind(this);
-    this.dateDiff = this.dateDiff.bind(this);
-    this.handleSelect = this.handleSelect.bind(this);
-    this.handleSearchChange = this.handleSearchChange.bind(this);
-    this.updateDataBase = this.updateDataBase.bind(this);
-    this.updateLocalStorage = this.updateLocalStorage.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+const Form = (props) => {
+  const [address, setAddress] = useState('');
+  const [latitude, setLatitude] = useState('');
+  const [longitude, setLongitude] = useState('');
+  const [start, setStart] = useState('');
+  const [end, setEnd] = useState('');
+  const [isActive, setActive] = useState(false);
+
+  const handleChange = (event) => {
+    switch(event.target.name) {
+      case 'address':
+        setAddress(event.target.value);
+        break;
+      case 'latitude':
+        setLatitude(event.target.value);
+        break;
+      case 'longitude':
+        setLongitude(event.target.value);
+        break;
+      case 'start':
+        setStart(event.target.value);
+        break;
+      case 'end':
+        setEnd(event.target.value);
+        break;
+      default: return;
+    }
   }
 
-  dateDiff(dateStr1, dateStr2) {
-    const [year1, month1, day1] = dateStr1
-      .split('-')
-      .map(numStr => Number(numStr));
-    const [year2, month2, day2] = dateStr2
-      .split('-')
-      .map(numStr => Number(numStr));
-    const firstDate = new Date(year1, month1, day1);
-    const secondDate = new Date(year2, month2, day2);
-    const diffDays = Math.round(secondDate - firstDate) / (24 * 60 * 60 * 1000);
-    return (diffDays / 365).toFixed(2);
+  const handleSearchChange = (address) => {
+    setAddress(address);
   }
 
-  handleChange(event) {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  }
-
-  handleSearchChange(address) {
-    this.setState({ address });
-  }
-
-  handleSelect = async address => {
+  const handleSelect = async address => {
     try {
       const results = await geocodeByAddress(address);
       const fullAddress = results[0].formatted_address;
       const { lat, lng } = await getLatLng(results[0]);
-      this.setState({
-        address: fullAddress,
-        latitude: lat,
-        longitude: lng,
-      });
+      setAddress(fullAddress);
+      setLatitude(lat);
+      setLongitude(lng);
     } catch (err) {
       console.error('Error', err);
     }
   };
 
-  handleSubmit(event) {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    const years = this.dateDiff(
+    const years = dateDiff(
       event.target.start.value,
       event.target.end.value
     );
-    const name = this.state.address.split(',')[0];
-    const lat = Number(this.state.latitude);
-    const lng = Number(this.state.longitude);
+    const name = address.split(',')[0];
+    const lat = Number(latitude);
+    const lng = Number(longitude);
 
     const newPlace = {
       name,
@@ -78,94 +67,67 @@ class Form extends React.Component {
       lng,
       years,
     };
-    this.props.places.push(newPlace);
-    this.props.isSignedIn ? this.updateDataBase(newPlace) : this.updateLocalStorage(newPlace);
+    props.places.push(newPlace);
+    props.isSignedIn ? updateDataBase(newPlace) : updateLocalStorage(newPlace);
 
-    this.setState({
-      address: '',
-      latitude: '',
-      longitude: '',
-      start: '',
-      end: '',
-    });
+    setAddress('');
+    setLatitude('');
+    setLongitude('');
+    setStart('');
+    setEnd('');
     return;
   }
 
-  updateDataBase(newPlace){
-    let newKey = 0;
-    const userId = firebase.auth().currentUser.uid;
-    const rootRef = firebase.database().ref('/users/' + userId + '/places');
-    rootRef.on(
-      'value',
-      snapshot => {
-        newKey = +snapshot.numChildren();
-      },
-      error => console.log(error)
-    );
-    const updates = {};
-    updates['/places/' + newKey] = newPlace;
-
-    firebase.database().ref('/users/' + userId).update(updates);
+  //toggle button
+  const handleFormBtnClick = () => {
+    setActive(!isActive);
   }
 
-  updateLocalStorage(){
-    window.localStorage.setItem('places', JSON.stringify(this.props.places))
-    this.props.setPlaceNum(this.props.places.length)
-  }
-
-  // sign out
-  handleClick(){
-    this.props.setIsSignedIn(false);
-  }
-
-  render() {
-    const { address, start, end } = this.state;
-    return (
-      <div id="form-container">
-        <div className="form">
-        <form className="flexbox" onSubmit={this.handleSubmit}>
-          <Search
-            address={address}
-            handleSelect={this.handleSelect}
-            handleChange={this.handleSearchChange}
-          />
-          <div className="label-input">
-            <label>Since</label>
-            <input
-              name="start"
-              type="date"
-              value={start}
-              onChange={this.handleChange}
-              required={true}
-            ></input>
-          </div>
-          <div className="label-input">
-            <label>Till</label>
-            <input
-              name="end"
-              type="date"
-              value={end}
-              onChange={this.handleChange}
-              required={true}
-            ></input>
-          </div>
-          <button id="submit-button" type="submit">
-            Submit
+  return (
+    <div id="form-container">
+      <div className="form">
+      <form className="flexbox" onSubmit={handleSubmit}>
+        <Search
+          address={address}
+          handleSelect={handleSelect}
+          handleChange={handleSearchChange}
+        />
+        <div className="label-input">
+          <label>Since</label>
+          <input
+            name="start"
+            type="date"
+            value={start}
+            onChange={handleChange}
+            required={true}
+          ></input>
+        </div>
+        <div className="label-input">
+          <label>Till</label>
+          <input
+            name="end"
+            type="date"
+            value={end}
+            onChange={handleChange}
+            required={true}
+          ></input>
+        </div>
+        <button id="submit-button" type="submit">
+          Submit
+        </button>
+        {props.isSignedIn &&
+          <button id="signout-button" type="button" onClick={handleSignOut}>
+            Signout
           </button>
-          {this.props.isSignedIn &&
-            <button id="signout-button" type="button" onClick={this.handleClick}>
-              Signout
-            </button>
-          }
-          <p className="copy-mark">&copy; IGLOBE 2020</p>
-        </form>
-        </div>
-        <div className="form-btn">
-          <i className="fab fa-wpforms"></i>
-        </div>
+        }
+        <p className="copy-mark">&copy; IGLOBE 2020</p>
+      </form>
       </div>
-    );
-  }
+      <div className="form-btn">
+        <i className="fab fa-wpforms" onClick={handleFormBtnClick}></i>
+      </div>
+    </div>
+  );
 }
 
 export default Form;
