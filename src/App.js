@@ -23,7 +23,6 @@ function App(props) {
         if(data) setPlaces(data);
       }, error => console.log(error))
     } else {
-      // window.localStorage.clear();
       if(window.localStorage.places) setPlaces(JSON.parse(window.localStorage.getItem('places')));
       setPlaceNum(places.length);
     }

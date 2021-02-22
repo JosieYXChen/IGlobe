@@ -1,6 +1,6 @@
 #form-container {
   height: 25vh;
-  width: 100vw;
+  width: 30vw;
   opacity: 1;
   position: absolute;
   z-index: 99;
@@ -68,7 +68,7 @@ input {
   font-size: 1rem;
 }
 
-.form-btn {
+#form-container .form-btn {
   color: white;
   opacity: 0.5;
   font-size: 25px;

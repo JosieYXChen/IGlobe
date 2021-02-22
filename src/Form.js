@@ -15,15 +15,6 @@ const Form = (props) => {
 
   const handleChange = (event) => {
     switch(event.target.name) {
-      case 'address':
-        setAddress(event.target.value);
-        break;
-      case 'latitude':
-        setLatitude(event.target.value);
-        break;
-      case 'longitude':
-        setLongitude(event.target.value);
-        break;
       case 'start':
         setStart(event.target.value);
         break;
@@ -68,7 +59,7 @@ const Form = (props) => {
       years,
     };
     props.places.push(newPlace);
-    props.isSignedIn ? updateDataBase(newPlace) : updateLocalStorage(newPlace);
+    props.isSignedIn ? updateDataBase(newPlace) : updateLocalStorage(props);
 
     setAddress('');
     setLatitude('');
@@ -116,7 +107,7 @@ const Form = (props) => {
           Submit
         </button>
         {props.isSignedIn &&
-          <button id="signout-button" type="button" onClick={handleSignOut}>
+          <button id="signout-button" type="button" onClick={() => handleSignOut(props)}>
             Signout
           </button>
         }

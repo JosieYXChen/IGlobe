@@ -31,8 +31,12 @@ export const updateDataBase = (newPlace) => {
 }
 
 export const updateLocalStorage = (props) => {
-  window.localStorage.setItem('places', JSON.stringify(this.props.places))
+  window.localStorage.setItem('places', JSON.stringify(props.places))
   props.setPlaceNum(props.places.length)
+}
+
+export const clearLocalStorage = () => {
+  window.localStorage.clear();
 }
 
 // sign out
