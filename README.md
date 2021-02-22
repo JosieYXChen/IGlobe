@@ -4,6 +4,10 @@
 
 IGlobe is a website for users to visualize their life journey by marking all the places they have lived or traveled to on a 3-Dimentional globe.
 
+## Deployed Website
+
+`https://iglobe-cc8df.web.app/`
+
 ## Getting started
 
 1. Forb and clone this repo (`https://github.com/JosieYXChen/iglobe.git`). Default branch is named master.
