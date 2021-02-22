@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Form.css';
 
 import Search from './Search';
@@ -11,7 +11,11 @@ const Form = (props) => {
   const [longitude, setLongitude] = useState('');
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
-  const [isActive, setActive] = useState(false);
+  const [isFormActive, setFormActive] = useState(false);
+
+  useEffect(() => {
+    setFormActive(false)
+  },[])
 
   const handleChange = (event) => {
     switch(event.target.name) {
@@ -71,12 +75,12 @@ const Form = (props) => {
 
   //toggle button
   const handleFormBtnClick = () => {
-    setActive(!isActive);
+    setFormActive(!isFormActive);
   }
 
   return (
     <div id="form-container">
-      <div className="form">
+      <div className={isFormActive ? "activeForm": "form"}>
       <form className="flexbox" onSubmit={handleSubmit}>
         <Search
           address={address}
@@ -115,7 +119,9 @@ const Form = (props) => {
       </form>
       </div>
       <div className="form-btn">
-        <i className="fab fa-wpforms" onClick={handleFormBtnClick}></i>
+      {!isFormActive?
+      <i className="fab fa-wpforms" onClick={handleFormBtnClick}></i>:
+        <i className="fas fa-times-circle" onClick={handleFormBtnClick}></i>}
       </div>
     </div>
   );

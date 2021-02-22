@@ -73,13 +73,14 @@ input {
   opacity: 0.5;
   font-size: 25px;
   cursor: pointer;
+  margin-top: 5px;
   margin-left: 10px;
   display: none;
 }
 
 @media (max-width: 690px) {
-  .form-btn i.active:before {
-    content: '\f00d';
+  #form-container .form-btn {
+    display: block;
   }
 
   #form-container .form {
@@ -91,12 +92,21 @@ input {
     position: absolute;
     z-index: 99;
     top: 0vh;
-    left: -100%;
+    left: -180%;
     padding: 1vh 1vw 1vw 1vw;
     border-radius: 1%;
   }
 
-  #form-container .form.active {
-    left: 0;
+  #form-container .activeForm {
+    height: 30vh;
+    width: 50vw;
+    background-color: gray;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 99;
+    top: 5vh;
+    left: 25vw;
+    padding: 1vh 1vw 1vw 1vw;
+    border-radius: 1%;
   }
 }

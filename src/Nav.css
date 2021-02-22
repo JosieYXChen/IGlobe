@@ -35,16 +35,17 @@
   opacity: 0.5;
   font-size: 25px;
   cursor: pointer;
+  margin-top: 5px;
   margin-right: 10px;
   display: none;
 }
 
 @media (max-width: 690px) {
-  .menu-btn i.active:before {
-    content: '\f00d';
+  .menu-btn {
+    display: block;
   }
 
-  .menu {
+  #nav-bar .menu {
     position: absolute;
     width: 100vw;
     height: 10vh;
@@ -58,7 +59,16 @@
     right: -100%;
   }
 
-  .navbar .menu.active {
-    left: 0;
+  #nav-bar .activeMenu {
+    position: absolute;
+    width: 40vw;
+    height: 3vh;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-right: 1vh;
+    z-index: 99;
+    right: 12%;
   }
 }
