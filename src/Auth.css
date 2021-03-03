@@ -1,0 +1,9 @@
+.auth-container {
+  display: flex;
+  height: 100vh;
+  flex-direction: column;
+  background-image: url('login-background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}

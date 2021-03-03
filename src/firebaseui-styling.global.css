@@ -1,0 +1,9 @@
+.firebaseui-container {
+  background: black;
+  top: 100px;
+  margin-bottom: 15px;
+  min-height: 400px;
+  padding-top: 10px;
+  border-radius: 6px;
+  box-shadow: none;
+}
