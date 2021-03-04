@@ -5,6 +5,7 @@ import App from './App';
 import Nav from './Nav';
 import './Auth.css'
 import './firebaseui-styling.global.css'
+import { updateDataBase, clearLocalStorage } from './helper'
 
 const uiConfig = {
   signInFlow: 'popup',
@@ -34,6 +35,14 @@ const Auth = () => {
         <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
       </div>
   }
+
+  // move local storage to database once user signs in
+  if(window.localStorage.places) {
+    const localPlaces = JSON.parse(window.localStorage.getItem('places'));
+    localPlaces.forEach(place => updateDataBase(place));
+    clearLocalStorage()
+  }
+
   return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
 };
 
