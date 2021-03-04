@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 #form-container {
   height: 25vh;
   width: 30vw;
@@ -9,7 +11,7 @@
 
 .form {
   margin: 1vw 1vw;
-  height: 25vh;
+  height: fit-content;
   width: 20vh;
   background-color: gray;
   opacity: 0.4;
@@ -25,7 +27,7 @@
   display: flex;
   flex-direction: column;
   color: white;
-  font-family: impact;
+  font-family: Impact, 'Anton', sans-serif;
   font-style: italic;
   font-weight: bold;
   font-size: 1.5rem;
@@ -41,13 +43,13 @@
 }
 
 input {
-  font-family: impact;
+  font-family: Impact, 'Anton', sans-serif;
 }
 
 #submit-button {
   margin-top: 1vh;
   background-color: black;
-  font-family: impact;
+  font-family: Impact, 'Anton', sans-serif;
   font-size: 1rem;
   color: white;
   font-weight: bold;
@@ -57,7 +59,7 @@ input {
 #signout-button {
   margin-top: 1vh;
   background-color: black;
-  font-family: impact;
+  font-family: Impact, 'Anton', sans-serif;
   font-size: 1rem;
   color: white;
   font-weight: bold;

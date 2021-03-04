@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 #nav-bar {
   position: absolute;
   width: 100vw;
@@ -12,8 +14,8 @@
 
 .nav-text {
   color: white;
-  font-family: impact;
-  font-size: 2.5vh;
+  font-family: Impact, 'Anton', sans-serif;
+  font-size: 3vh;
   text-decoration: none;
   font-style: italic;
   opacity: 0.5;

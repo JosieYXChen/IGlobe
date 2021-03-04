@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+
 .background-container {
   width: 100vw;
   height: 100vh;
@@ -15,7 +17,7 @@
   color: white;
   font-size: 10vh;
   font-style: italic;
-  font-family: Impact;
+  font-family: Impact, 'Anton', sans-serif;
   text-shadow: 0rem 0rem 0.2rem white;
   box-shadow: 0rem 0rem 9rem white;
 }
