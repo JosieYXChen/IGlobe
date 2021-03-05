@@ -5,11 +5,11 @@ import App from './App';
 import Nav from './Nav';
 import './Auth.css'
 import './firebaseui-styling.global.css'
-import { updateDataBase, clearLocalStorage } from './helper'
+
 
 const uiConfig = {
   signInFlow: 'popup',
-  signInSuccessUrl: '/app',
+  signInSuccessUrl: '/#/app',
   signInOptions: [
     firebase.auth.EmailAuthProvider.PROVIDER_ID,
     firebase.auth.GoogleAuthProvider.PROVIDER_ID,
@@ -27,7 +27,7 @@ const Auth = () => {
     return () => unregisterAuthObserver();
   }, []);
 
-  if (!isSignedIn) {
+  if (!firebase.auth().currentUser) {
       return <div className="auth-container">
         <Nav />
         <FirebaseAuth uiConfig={uiConfig} firebaseAuth={firebase.auth()} />
@@ -35,13 +35,18 @@ const Auth = () => {
   }
 
   // move local storage to database once user signs in
-  if(window.localStorage.places) {
-    const localPlaces = JSON.parse(window.localStorage.getItem('places'));
-    localPlaces.forEach(place => updateDataBase(place));
-    clearLocalStorage()
-  }
+  // if(window.localStorage.places) {
+  //   console.log('is this running?');
+  //   const localPlaces = JSON.parse(window.localStorage.getItem('places'));
+  //   console.log(localPlaces);
+  //   localPlaces.forEach(place => updateDataBase(place));
+  //   clearLocalStorage()
+  // }
 
-  return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
+  // console.log("where is this leading to", isSignedIn, firebase.auth().currentUser.uid);
+  console.log(isSignedIn);
+
+  return <App />;
 };
 
 export default Auth;
