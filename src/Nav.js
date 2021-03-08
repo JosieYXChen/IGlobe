@@ -20,7 +20,7 @@ const Nav = (props) => {
     <div id="nav-bar">
       <div className={isNavActive? "activeMenu": "menu"}>
         {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
-        {currentRoute !== '/app' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
+        {currentRoute === '/' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
         {(currentRoute !== '/auth' && ( !isSignedIn ? <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link> : <span className="nav-link"><span className="nav-text" onClick={handleSignOut}>Log Out</span></span>))}
       </div>
       <div className="menu-btn">

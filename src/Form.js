@@ -3,7 +3,7 @@ import './Form.css';
 
 import Search from './Search';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { dateDiff, updateDataBase, updateLocalStorage, handleSignOut } from './helper'
+import { dateDiff, updateDataBase, updateLocalStorage } from './helper'
 
 const Form = (props) => {
   const [address, setAddress] = useState('');
@@ -110,11 +110,6 @@ const Form = (props) => {
         <button id="submit-button" type="submit">
           Submit
         </button>
-        {props.isSignedIn &&
-          <button id="signout-button" type="button" onClick={() => handleSignOut(props)}>
-            Signout
-          </button>
-        }
         <p className="copy-mark">&copy; IGLOBE 2020</p>
       </form>
       </div>
