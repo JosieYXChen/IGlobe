@@ -35,11 +35,11 @@ const Auth = () => {
   }
 
   // move local storage to database once user signs in
-  // if(window.localStorage.places) {
-  //   const localPlaces = JSON.parse(window.localStorage.getItem('places'));
-  //   localPlaces.forEach(place => updateDataBase(place));
-  //   clearLocalStorage()
-  // }
+  if(window.localStorage.places) {
+    const localPlaces = JSON.parse(window.localStorage.getItem('places'));
+    localPlaces.forEach(place => updateDataBase(place));
+    clearLocalStorage()
+  }
 
   return <App isSignedIn={isSignedIn} setIsSignedIn={setIsSignedIn} />;
 };
