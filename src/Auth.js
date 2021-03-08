@@ -36,8 +36,19 @@ const Auth = () => {
 
   // move local storage to database once user signs in
   if(window.localStorage.places) {
-    const localPlaces = JSON.parse(window.localStorage.getItem('places'));
-    localPlaces.forEach(place => updateDataBase(place));
+    const data = JSON.parse(window.localStorage.getItem('places'));
+    const localPlaces = [];
+    data.forEach(place => {
+      const placeObj = {};
+      placeObj.lat = place.lat;
+      placeObj.lng = place.lng;
+      placeObj.name = place.name;
+      placeObj.years = place.years;
+      localPlaces.push(placeObj);
+    })
+
+    // localPlaces.forEach(place => updateDataBase(place));
+    updateDataBase(localPlaces);
     clearLocalStorage()
   }
 

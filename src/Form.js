@@ -110,6 +110,9 @@ const Form = (props) => {
         <button id="submit-button" type="submit">
           Submit
         </button>
+        <button id="clear-button" type="button">
+          Clear
+        </button>
         <p className="copy-mark">&copy; IGLOBE 2020</p>
       </form>
       </div>

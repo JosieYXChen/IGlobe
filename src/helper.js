@@ -13,10 +13,11 @@ export const dateDiff = (dateStr1, dateStr2) => {
   return (diffDays / 365).toFixed(2);
 };
 
-export const updateDataBase = (newPlace) => {
+export const updateDataBase = (newPlaces) => {
   let newKey = 0;
   const userId = firebase.auth().currentUser.uid;
   const rootRef = firebase.database().ref('/users/' + userId + '/places');
+
   rootRef.on(
     'value',
     snapshot => {
@@ -25,9 +26,14 @@ export const updateDataBase = (newPlace) => {
     error => console.log(error)
   );
   const updates = {};
-  updates['/places/' + newKey] = newPlace;
+  if(Array.isArray(newPlaces)) {
+    newPlaces.forEach((newPlace, idx) => {
+      updates[newKey + idx] = newPlace;
+    })
+  }
+  else updates[newKey] = newPlaces;
 
-  firebase.database().ref('/users/' + userId).update(updates);
+  firebase.database().ref('/users/' + userId + '/places').update(updates);
 }
 
 export const updateLocalStorage = (props) => {
