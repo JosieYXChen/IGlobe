@@ -19,15 +19,15 @@ IGlobe is a website for users to visualize their life journey by marking all the
 ## How to use IGlobe
 
 1. From the home page, you can start mapping your journey directly by clicking `Start` as a guest. Or you can click `Log In` as a user.
-2. If you are a new user, after creating an account, you will be navigated back to the home page. Then click `Log In` if you wish to start as a user.
-3. Once you enter the app page, you will see a form consisting of a search bar, two date input areas, and a submit button. You can search and select a place you have been to at the search bar. Then you indicate how long you were at the place by choosing the starting date and ending date.
-4. Once you submit the place with the starting and ending dates, a mark of that place will appear on the globe
-5. If you are a logged-in user, you will see an additional `sign out` button. You can click this button to sign out.
+2. Once you enter the globe page, you will see a form consisting of a search bar, two date input areas, a submit button, and a clear button. You can search and select a place you have been to at the search bar. Then you indicate how long you were at the place by choosing the starting date and ending date.
+3. Once you submit the place with the starting and ending dates, a mark of that place will appear on the globe.
+4. You can delete all places by clicking the clear button.
+5. You can sign out by clicking the `Log Out` link on the navigation bar. You will be navigated to the authorization page.
 6. Have fun!
 
 ## Features under Development and erros to fix
 
-1. IGlobe runs on all devices, but has the most stable performance on a computer. I am still improving the performace of IGlobe on other devices
-2. IGlobe will have the functionality to allow users to delete the markers.
+1. IGlobe runs on all devices, but has the most stable performance on a computer. I am still improving the performace of IGlobe on other devices.
+2. IGlobe will have the functionality to allow users to delete individual markers.
 3. An arch will appear between two places that are temporally connected to each other.
 4. IGlobe will have the functionality to allow users to choose their own colors for each marker;
