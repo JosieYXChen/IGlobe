@@ -21,7 +21,8 @@ const Nav = (props) => {
       <div className={isNavActive? "activeMenu": "menu"}>
         {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
         {currentRoute === '/' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
-        {(currentRoute !== '/auth' && ( !isSignedIn ? <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link> : <span className="nav-link"><span className="nav-text" onClick={handleSignOut}>Log Out</span></span>))}
+        {currentRoute !== '/auth' && !isSignedIn && <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link>}
+        {currentRoute === '/auth' && isSignedIn && <span className="nav-link"><span className="nav-text" onClick={() => handleSignOut(props)}>Log Out</span></span>}
       </div>
       <div className="menu-btn">
         {!isNavActive?
