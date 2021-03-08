@@ -3,7 +3,7 @@ import './Form.css';
 
 import Search from './Search';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { dateDiff, updateDataBase, updateLocalStorage } from './helper'
+import { dateDiff, updateDataBase, updateLocalStorage, clearDataBase, clearLocalStorage } from './helper'
 
 const Form = (props) => {
   const [address, setAddress] = useState('');
@@ -73,6 +73,12 @@ const Form = (props) => {
     return;
   }
 
+  //handle clear
+  const handleClear = () => {
+    props.setPlaces([]);
+    props.isSignedIn ? clearDataBase(props) : clearLocalStorage(props);
+  }
+
   //toggle button
   const handleFormBtnClick = () => {
     setFormActive(!isFormActive);
@@ -110,7 +116,7 @@ const Form = (props) => {
         <button id="submit-button" type="submit">
           Submit
         </button>
-        <button id="clear-button" type="button">
+        <button id="clear-button" type="button" onClick={handleClear}>
           Clear
         </button>
         <p className="copy-mark">&copy; IGLOBE 2020</p>

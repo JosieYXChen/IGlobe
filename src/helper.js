@@ -41,6 +41,14 @@ export const updateLocalStorage = (props) => {
   props.setPlaceNum(props.places.length)
 }
 
+// clear
+
+export const clearDataBase = () => {
+  const userId = firebase.auth().currentUser.uid;
+  console.log(userId);
+  firebase.database().ref('/users/' + userId).remove();
+}
+
 export const clearLocalStorage = () => {
   window.localStorage.clear();
 }
