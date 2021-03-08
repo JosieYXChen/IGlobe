@@ -2,13 +2,11 @@ import React, { Suspense } from 'react'
 import { Canvas } from 'react-three-fiber'
 import { OrbitControls } from 'drei'
 import BackgroundCube from './BackgroundCube'
-import firebase from 'firebase';
 import './Home.css'
 import Nav from './Nav'
 const BackgroundGlobe = React.lazy(() => import('./BackgroundGlobe'))
 
 const Home = () => {
-  console.log(firebase.auth().currentUser)
   return (
     <div className="background-container">
       <audio src={ process.env.PUBLIC_URL + '/background.mp3'} autoPlay />

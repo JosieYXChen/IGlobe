@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Form.css';
-import firebase from 'firebase';
+
 import Search from './Search';
 import { geocodeByAddress, getLatLng } from 'react-places-autocomplete';
-import { dateDiff, updateDataBase, updateLocalStorage} from './helper'
+import { dateDiff, updateDataBase, updateLocalStorage } from './helper'
 
 const Form = (props) => {
   const [address, setAddress] = useState('');
@@ -63,7 +63,7 @@ const Form = (props) => {
       years,
     };
     props.places.push(newPlace);
-    firebase.auth().currentUser ? updateDataBase(newPlace) : updateLocalStorage(props);
+    props.isSignedIn ? updateDataBase(newPlace) : updateLocalStorage(props);
 
     setAddress('');
     setLatitude('');

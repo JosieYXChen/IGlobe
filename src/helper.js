@@ -41,7 +41,5 @@ export const clearLocalStorage = () => {
 
 // sign out
 export const handleSignOut = (props) => {
-  firebase.auth().signOut().then(() => {
-    // props.setIsSignedIn(false);
-  }).catch((error) => console.log('failed to log out', error));
+  props.setIsSignedIn(false);
 }

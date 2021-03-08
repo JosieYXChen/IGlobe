@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useLocation } from 'react-router-dom'
-import firebase from 'firebase';
-import { handleSignOut } from './helper';
+import { handleSignOut } from './helper'
 import './Nav.css'
 
-const Nav = () => {
+const Nav = (props) => {
   const [isNavActive, setNavActive] = useState('false')
   const currentRoute = useLocation().pathname;
+  const { isSignedIn } = props;
 
   const handleClick = () => {
     setNavActive(!isNavActive);
@@ -20,8 +20,9 @@ const Nav = () => {
     <div id="nav-bar">
       <div className={isNavActive? "activeMenu": "menu"}>
         {currentRoute !== '/' && <Link to='/' className="nav-link"><span className="nav-text">Home</span></Link>}
-        {currentRoute !== '/app' && !firebase.auth().currentUser && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
-        {currentRoute !== '/auth' && (!firebase.auth().currentUser ? <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link> : <span className="nav-link"><span className="nav-text" onClick={handleSignOut}>Log Out</span></span>)}
+        {currentRoute === '/' && !isSignedIn && <Link to='/app' className="nav-link"><span className="nav-text">Start</span></Link>}
+        {currentRoute !== '/auth' && !isSignedIn && <Link to='/auth' className="nav-link"><span className="nav-text">Log In</span></Link>}
+        {currentRoute === '/auth' && isSignedIn && <span className="nav-link"><span className="nav-text" onClick={() => handleSignOut(props)}>Log Out</span></span>}
       </div>
       <div className="menu-btn">
         {!isNavActive?
